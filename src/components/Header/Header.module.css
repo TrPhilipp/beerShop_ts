@@ -1,0 +1,22 @@
+.header {
+  max-width: 1140px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1c2970;
+  margin: 0 auto;
+}
+
+.header__name {
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 8px;
+  color: #fff;
+}
+
+@media (max-width: 720px) {
+  .header__name {
+    font-size: 15px;
+  }
+}

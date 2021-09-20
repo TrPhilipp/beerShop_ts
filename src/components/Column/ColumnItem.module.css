@@ -1,0 +1,57 @@
+.column {
+  flex: 0 1 45%;
+}
+
+.column__item {
+  margin: 10px 0;
+  padding: 4px;  
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+.column__btn {
+  cursor: pointer;
+  color: #fff;
+  width: 200px;
+  height: 30px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-family: 'Nunito Sans', sans-serif;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+.column__btn:hover {
+  filter: brightness(90%);
+  box-shadow: 0 0.3rem rgba(255, 255, 255, 0.7);
+}
+
+.column__btn:active {
+  transform: translate(0, 2px);
+}
+
+.column__btn:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+
+.btn__beer {
+background-color: rgba(25, 118, 210, 0.8);
+}
+
+.btn__basket {
+  background-color: rgba(220, 0, 78, 0.8);
+}
+
+@media (max-width: 720px) {
+  .column {
+    margin: 10px 10px;
+    min-width: 130px;
+  }
+  .column__btn {
+    width: 120px;
+  }
+}

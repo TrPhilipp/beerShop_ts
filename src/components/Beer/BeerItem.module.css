@@ -1,0 +1,50 @@
+.beer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  padding: 16px;
+  min-height: 30px;
+  border-radius: 5px;
+  margin-top: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.beer:hover {
+  box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.beer__name {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 20px;
+}
+
+.beer__btn {
+  display: none;
+  width: 60px;
+  color: #000;
+}
+
+.beer__btn:hover {
+  transform: scale(110%);
+}
+
+.beer:hover .beer__btn {
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .beer {
+    width: 80%;
+    margin: 10px auto;
+    min-height: 40px;
+    padding: 10px;
+  }
+
+  .beer__name {
+    font-size: 22px;
+  }
+}
