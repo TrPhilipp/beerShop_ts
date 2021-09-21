@@ -36,7 +36,6 @@ const BeerItem: FC<BeerProps> = ({ item, index, columnId }) => {
         items: destItems,
       },
     }
-    dispatch(BeerActionCreators.setCurrentBeer(newColumns.beer.items))
     dispatch(BeerActionCreators.reshuflleColums(newColumns))
     if (columnId === COLUMN_ID.BEER) {
       dispatch(BeerActionCreators.addBeer(1))

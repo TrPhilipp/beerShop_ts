@@ -6,6 +6,7 @@ import classes from './BeerCatalog.module.css'
 import { useTypedSelector } from './../../hooks/UseTypedSelector'
 import { IColumn, IColumns } from '../../types'
 import { BeerActionCreators } from './../../redux/actionCreators/beer'
+import { COLUMN_ID } from '../../utils/consts'
 
 const BeerCatalog: FC = () => {
   const { columns } = useTypedSelector((state) => state.beer)
@@ -32,8 +33,10 @@ const BeerCatalog: FC = () => {
           items: destItems,
         },
       }
-      dispatch(BeerActionCreators.setCurrentBeer(newColumns.beer.items))
       dispatch(BeerActionCreators.reshuflleColums(newColumns))
+      if (source.droppableId === COLUMN_ID.BEER) {
+        dispatch(BeerActionCreators.addBeer(1))
+      }
       return
     }
     const column = columns[source.droppableId] as IColumn

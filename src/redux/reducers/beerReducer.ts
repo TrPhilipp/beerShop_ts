@@ -7,7 +7,6 @@ const initialState: BeerState = {
     basket: { name: 'basket', items: [] },
   },
   allBeer: [],
-  currentBeer: [],
 }
 
 export const beerReducer = (
@@ -20,20 +19,6 @@ export const beerReducer = (
         ...state,
         allBeer: [...action.payload],
       }
-    case BeerActionTypes.SET_BEER: {
-      const newBeer = state.allBeer.splice(0, action.payload)
-      return {
-        ...state,
-        columns: {
-          ...state.columns,
-          beer: {
-            ...state.columns.beer,
-            items: [...state.columns.beer.items, ...newBeer],
-          },
-        },
-        currentBeer: [...state.currentBeer, ...newBeer],
-      }
-    }
     case BeerActionTypes.RESHUFFLE_COLUMN:
       return {
         ...state,
@@ -89,11 +74,6 @@ export const beerReducer = (
               : returnBeer(state.allBeer, state.columns.basket.items),
           },
         },
-      }
-    case BeerActionTypes.SET_CURRENT_BEER:
-      return {
-        ...state,
-        currentBeer: [...action.payload],
       }
     case BeerActionTypes.ADD_BEER: {
       let initialNumber: number =

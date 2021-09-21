@@ -3,7 +3,6 @@ import { AppActionCreators } from './app'
 import BeerApi from './../../API/BeerApi'
 import { BeerAction, BeerActionTypes } from '../types/beer'
 import { IColumn, IColumns } from '../../types'
-import { IBeer } from './../../types/index'
 
 export const BeerActionCreators = {
   getAllBeer: () => async (dispatch: Dispatch) => {
@@ -18,10 +17,6 @@ export const BeerActionCreators = {
       console.log(error)
     }
   },
-  setBeer: (count: number): BeerAction => ({
-    type: BeerActionTypes.SET_BEER,
-    payload: count,
-  }),
   reshuffleColumn: (columnName: string, column: IColumn): BeerAction => ({
     type: BeerActionTypes.RESHUFFLE_COLUMN,
     payload: { columnName, column },
@@ -38,10 +33,7 @@ export const BeerActionCreators = {
   removeAll: (): BeerAction => ({
     type: BeerActionTypes.REMOVE_ALL,
   }),
-  setCurrentBeer: (beer: Array<IBeer>): BeerAction => ({
-    type: BeerActionTypes.SET_CURRENT_BEER,
-    payload: beer,
-  }),
+
   addBeer: (count: number): BeerAction => ({
     type: BeerActionTypes.ADD_BEER,
     payload: count,

@@ -2,15 +2,11 @@ import React, { ChangeEvent, FC } from 'react'
 import { useDispatch } from 'react-redux'
 import classes from './Search.module.css'
 import { BeerActionCreators } from './../../redux/actionCreators/beer'
-import { useTypedSelector } from './../../hooks/UseTypedSelector'
 
 const Search: FC = () => {
-  const beer = useTypedSelector((state) => state.beer)
   const dispatch = useDispatch()
-  console.log(beer.columns.beer.items.length)
 
   const searchBeer = (e: ChangeEvent<HTMLInputElement>): void => {
-    // if (!beer.items.length) return
     const search = e.target.value
     dispatch(BeerActionCreators.filterBeer(search))
   }

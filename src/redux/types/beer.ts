@@ -5,7 +5,6 @@ import { IBeer, IColumn, IColumns } from '../../types'
 export interface BeerState {
   columns: IColumns
   allBeer: Array<IBeer>
-  currentBeer: Array<IBeer>
 }
 
 export enum BeerActionTypes {
@@ -48,16 +47,6 @@ interface FilterBeerAction {
   payload: string
 }
 
-interface SetCurrentBeer {
-  type: BeerActionTypes.SET_CURRENT_BEER
-  payload: Array<IBeer>
-}
-
-interface SetBeer {
-  type: BeerActionTypes.SET_BEER
-  payload: number
-}
-
 interface AddBeerAction {
   type: BeerActionTypes.ADD_BEER
   payload: number
@@ -70,6 +59,4 @@ export type BeerAction =
   | AddAllAction
   | RemoveAllAction
   | FilterBeerAction
-  | SetCurrentBeer
-  | SetBeer
   | AddBeerAction
