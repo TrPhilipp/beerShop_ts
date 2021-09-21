@@ -17,6 +17,7 @@ export enum BeerActionTypes {
   FILTER_BEER = 'FILTER_BEER',
   SET_CURRENT_BEER = 'SET_CURRENT_BEER',
   SET_BEER = 'SET_BEER',
+  ADD_BEER = 'ADD_BEER',
 }
 
 interface GetAllBeerAction {
@@ -57,6 +58,11 @@ interface SetBeer {
   payload: number
 }
 
+interface AddBeerAction {
+  type: BeerActionTypes.ADD_BEER
+  payload: number
+}
+
 export type BeerAction =
   | GetAllBeerAction
   | ReshuffleColumnAction
@@ -66,3 +72,4 @@ export type BeerAction =
   | FilterBeerAction
   | SetCurrentBeer
   | SetBeer
+  | AddBeerAction

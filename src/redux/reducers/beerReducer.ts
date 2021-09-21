@@ -80,9 +80,13 @@ export const beerReducer = (
           ...state.columns,
           beer: {
             ...state.columns.beer,
-            items: state.currentBeer.filter((beer) =>
-              filterItems(beer, action.payload)
-            ),
+            items: action.payload
+              ? filterBeer(
+                  action.payload,
+                  state.allBeer,
+                  state.columns.basket.items
+                )
+              : returnBeer(state.allBeer, state.columns.basket.items),
           },
         },
       }
@@ -91,11 +95,46 @@ export const beerReducer = (
         ...state,
         currentBeer: [...action.payload],
       }
+    case BeerActionTypes.ADD_BEER: {
+      let initialNumber: number =
+        state.columns.beer.items.length + state.columns.basket.items.length
+      if (initialNumber === 80) {
+        return state
+      }
+      const newArray = [
+        ...state.allBeer.slice(initialNumber, initialNumber + action.payload),
+      ]
+      return {
+        ...state,
+        columns: {
+          ...state.columns,
+          beer: {
+            ...state.columns.beer,
+            items: [...state.columns.beer.items, ...newArray],
+          },
+        },
+      }
+    }
     default:
       return state
   }
 }
 
-function filterItems(item: IBeer, searchQuery: string) {
-  return item.name.toLowerCase().includes(searchQuery.toLowerCase())
+function filterBeer(
+  searchQ: string,
+  allBeer: Array<IBeer>,
+  array2: Array<IBeer>
+): Array<IBeer> {
+  return allBeer.filter((item) => {
+    return (
+      item.name.toLowerCase().includes(searchQ.toLowerCase()) &&
+      !array2.some((i) => i.id === item.id)
+    )
+  })
+}
+
+function returnBeer(allBeer: Array<IBeer>, array2: Array<IBeer>) {
+  return allBeer.filter((item) => {
+    return item.id < 21 && !array2.some((i) => i.id === item.id)
+  })
 }

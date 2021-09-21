@@ -5,12 +5,12 @@ import { BeerActionCreators } from './../../redux/actionCreators/beer'
 import { useTypedSelector } from './../../hooks/UseTypedSelector'
 
 const Search: FC = () => {
-  const { beer } = useTypedSelector((state) => state.beer.columns)
+  const beer = useTypedSelector((state) => state.beer)
   const dispatch = useDispatch()
-  console.log(beer)
+  console.log(beer.columns.beer.items.length)
 
   const searchBeer = (e: ChangeEvent<HTMLInputElement>): void => {
-    if (!beer.items.length) return
+    // if (!beer.items.length) return
     const search = e.target.value
     dispatch(BeerActionCreators.filterBeer(search))
   }

@@ -11,7 +11,7 @@ export const BeerActionCreators = {
       dispatch(AppActionCreators.setLoad())
       const response = await BeerApi.getAllBeer()
       dispatch({ type: BeerActionTypes.GET_ALL_BEER, payload: response })
-      dispatch(BeerActionCreators.setBeer(20))
+      dispatch(BeerActionCreators.addBeer(20))
       dispatch(AppActionCreators.setLoad())
       dispatch(AppActionCreators.setReady())
     } catch (error) {
@@ -41,5 +41,9 @@ export const BeerActionCreators = {
   setCurrentBeer: (beer: Array<IBeer>): BeerAction => ({
     type: BeerActionTypes.SET_CURRENT_BEER,
     payload: beer,
+  }),
+  addBeer: (count: number): BeerAction => ({
+    type: BeerActionTypes.ADD_BEER,
+    payload: count,
   }),
 }

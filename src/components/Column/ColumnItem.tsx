@@ -31,7 +31,7 @@ const ColumnItem: FC<ColumnProps> = ({ columnId, column }) => {
   const handleScroll = (e: React.UIEvent<HTMLDivElement>): void => {
     if (columnId !== COLUMN_ID.BEER) return
     if (checkHeight(e)) {
-      dispatch(BeerActionCreators.setBeer(10))
+      dispatch(BeerActionCreators.addBeer(10))
     }
   }
 
